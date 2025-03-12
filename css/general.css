@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "firaGO";
+  src: url("/fonts/FiraGO-Book.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 *,
 *::after,
 *::before {
@@ -14,6 +21,7 @@ body {
   width: 100%;
   line-height: 1;
   font-weight: 400;
+  font-family: "FiraGO", sans-serif;
   color: #212529;
   overflow-x: hidden;
   background-color: #fff;
