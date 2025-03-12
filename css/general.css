@@ -1,0 +1,32 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%; /* 1 rem = 10px */
+  width: 192rem; /* 1920px */
+  scroll-behavior: smooth;
+}
+body {
+  width: 100%;
+  line-height: 1;
+  font-weight: 400;
+  color: #212529;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
