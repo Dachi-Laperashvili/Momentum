@@ -1,3 +1,5 @@
+// STATUSES
+
 // Getting task statuses from momentum api
 async function getStatuses() {
   try {
@@ -19,8 +21,6 @@ async function getStatuses() {
     console.error("Error:", error);
   }
 }
-
-getStatuses();
 
 async function displayStatusDivs() {
   try {
@@ -47,3 +47,29 @@ async function displayStatusDivs() {
 }
 
 displayStatusDivs();
+
+// TASKS
+
+async function getTasks() {
+  try {
+    const res = await fetch(
+      "https://momentum.redberryinternship.ge/api/tasks",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${"9e6c0298-5b0f-4841-a699-c4e787ea043a"}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const tasks = await res.json();
+    console.log(tasks);
+
+    return tasks;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+getTasks();
