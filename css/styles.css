@@ -49,6 +49,10 @@ h1 {
   margin-bottom: 5rem;
 }
 
+.filter-container {
+  margin-bottom: 8rem;
+}
+
 .filter-links {
   display: flex;
   border: 1px dotted #dee2e6;
@@ -63,4 +67,31 @@ h1 {
 
 .filter-link img {
   margin-left: 8px;
+}
+
+/* statuses */
+
+.status-title {
+  font-weight: 500;
+  font-size: 2rem;
+  padding: 15px 0;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.status-0 {
+  background-color: #f7bc30;
+}
+
+.status-1 {
+  background-color: #fb5607;
+}
+
+.status-2 {
+  background-color: #ff006e;
+}
+
+.status-3 {
+  background-color: #3a86ff;
 }

@@ -27,11 +27,19 @@ async function displayStatusDivs() {
     const statuses = await getStatuses();
     const container = document.querySelector(".tasks-container");
 
+    // creating column div and appending new divs with status names inside it
     statuses.forEach((status, index) => {
-      const div = document.createElement("div");
-      div.classList.add(`status-${index}`);
-      div.textContent = status.name;
-      container.appendChild(div);
+      const column = document.createElement("div");
+      column.classList.add("status-column");
+      column.classList.add(status.name.toLowerCase().replace(/\s+/g, "-")); // removing spaces from status name
+
+      const statusDiv = document.createElement("div");
+      statusDiv.classList.add("status-title");
+      statusDiv.classList.add(`status-${index}`);
+      statusDiv.textContent = status.name;
+
+      container.appendChild(column);
+      column.appendChild(statusDiv);
     });
   } catch (error) {
     console.error("Error:", error);
