@@ -1,3 +1,4 @@
+/* HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -36,4 +37,30 @@ header {
 
 .cta-link:hover {
   background-color: #b588f4;
+}
+
+/* MAIN SECTION */
+.container {
+  padding: 3rem 12rem;
+}
+h1 {
+  font-weight: 600;
+  font-size: 3.4rem;
+  margin-bottom: 5rem;
+}
+
+.filter-links {
+  display: flex;
+  border: 1px dotted #dee2e6;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  gap: 4.5rem;
+}
+
+.filter-link {
+  padding: 1rem 1.8rem;
+}
+
+.filter-link img {
+  margin-left: 8px;
 }
