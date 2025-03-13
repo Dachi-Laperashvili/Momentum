@@ -73,3 +73,30 @@ async function getTasks() {
 }
 
 getTasks();
+
+async function displayTasks() {
+  try {
+    const tasks = await getTasks();
+    tasks.forEach((task, index) => {
+      const statusColumns = document.querySelectorAll(".status-column");
+
+      // if task status matches status column then adding task in that column
+      statusColumns.forEach((column) => {
+        // creating div for task
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.textContent = task.name;
+
+        const name = task.status.name.toLowerCase().replace(/\s+/g, "-"); // status name without spaces
+
+        if (column.classList.contains(name)) {
+          column.appendChild(card); // adding task
+        }
+      });
+    });
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+}
+
+displayTasks();
