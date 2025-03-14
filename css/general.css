@@ -1,7 +1,28 @@
 @font-face {
   font-family: "firaGO";
   src: url("/fonts/FiraGO-Book.otf") format("opentype");
-  font-weight: normal;
+  font-weight: 350;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "firaGO";
+  src: url("/fonts/FiraGO-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "firaGO";
+  src: url("/fonts/FiraGO-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "firaGO";
+  src: url("/fonts/FiraGO-SemiBold.otf") format("opentype");
+  font-weight: 600;
   font-style: normal;
 }
 

@@ -196,8 +196,6 @@ async function displayTasks() {
         if (column.classList.contains(name)) {
           column.appendChild(card); // adding task
         }
-        console.log(statusTitle);
-        console.log(window.getComputedStyle(statusTitle).backgroundColor);
       });
     });
   } catch (error) {
