@@ -1,3 +1,9 @@
+/*  
+**********************************
+      MAIN PAGE FUNCTIONALITY
+**********************************      
+*/
+
 // STATUSES
 
 // Getting task statuses from momentum api
@@ -74,6 +80,13 @@ async function getTasks() {
 
 getTasks();
 
+function createCard(content) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.textContent = content;
+  return card;
+}
+
 async function displayTasks() {
   try {
     const tasks = await getTasks();
@@ -83,9 +96,7 @@ async function displayTasks() {
       // if task status matches status column then adding task in that column
       statusColumns.forEach((column) => {
         // creating div for task
-        const card = document.createElement("div");
-        card.classList.add("card");
-        card.textContent = task.name;
+        const card = createCard(task.name);
 
         const name = task.status.name.toLowerCase().replace(/\s+/g, "-"); // status name without spaces
 
