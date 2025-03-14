@@ -78,25 +78,108 @@ async function getTasks() {
   }
 }
 
-getTasks();
-
-function createCard(content) {
+//  function to create task cards in html
+function createCard(
+  title,
+  priority,
+  icon,
+  date,
+  department,
+  description,
+  avatar,
+  comments_count
+) {
+  // card div
   const card = document.createElement("div");
   card.classList.add("card");
-  card.textContent = content;
+
+  // details div containing due date and priority and departament tags
+  const details = document.createElement("div");
+  details.classList.add("task-details");
+
+  // list of priority and departament tags
+  const tags = document.createElement("ul");
+  tags.classList.add("tags");
+
+  // creating tag for priority with icon and name
+  const priorityTag = document.createElement("li");
+  const prioritySvg = document.createElement("img");
+  const prioritySpan = document.createElement("span");
+
+  prioritySvg.src = icon;
+  prioritySpan.textContent = priority;
+
+  priorityTag.appendChild(prioritySvg);
+  priorityTag.appendChild(prioritySpan);
+
+  // departament
+  const departmentTag = document.createElement("li");
+  departmentTag.textContent = department;
+
+  // due-date
+  const dueDate = document.createElement("span");
+  dueDate.textContent = date;
+
+  // task content
+
+  const content = document.createElement("div");
+  content.classList.add("content");
+  const taskTitle = document.createElement("h2");
+  taskTitle.textContent = title;
+  const taskDescription = document.createElement("p");
+  taskDescription.textContent = description;
+
+  // uploader img and comments
+  const bottomDetails = document.createElement("div");
+  bottomDetails.classList.add("task-details");
+
+  const uploaderImg = document.createElement("img");
+  uploaderImg.src = avatar;
+  uploaderImg.width = 31;
+
+  // comments
+  const comments = document.createElement("div");
+  comments.classList.add("comments");
+
+  const commentsIcon = document.createElement("img");
+  commentsIcon.src = "/assets/comments.svg";
+
+  const count = document.createElement("span");
+  count.textContent = comments_count;
+
+  // creating card structure
+  tags.append(priorityTag, departmentTag);
+  details.append(tags, dueDate);
+
+  content.append(taskTitle, taskDescription);
+
+  comments.append(commentsIcon, count);
+  bottomDetails.append(uploaderImg, comments);
+
+  card.append(details, content, bottomDetails);
+
   return card;
 }
 
 async function displayTasks() {
   try {
     const tasks = await getTasks();
-    tasks.forEach((task, index) => {
+    tasks.forEach((task) => {
       const statusColumns = document.querySelectorAll(".status-column");
 
       // if task status matches status column then adding task in that column
       statusColumns.forEach((column) => {
         // creating div for task
-        const card = createCard(task.name);
+        const card = createCard(
+          task.name,
+          task.priority.name,
+          task.priority.icon,
+          task.due_date,
+          task.department.name,
+          task.description,
+          task.employee.avatar,
+          task.total_comments
+        );
 
         const name = task.status.name.toLowerCase().replace(/\s+/g, "-"); // status name without spaces
 

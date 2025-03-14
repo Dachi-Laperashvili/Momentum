@@ -41,7 +41,6 @@ img {
 
 .grid {
   display: grid;
-  row-gap: 3rem;
   column-gap: 5.2rem;
 }
 
