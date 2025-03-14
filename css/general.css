@@ -26,6 +26,18 @@ body {
   overflow-x: hidden;
   background-color: #fff;
 }
+
+h1 {
+  font-weight: 600;
+  font-size: 3.4rem;
+  margin-bottom: 5.2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
 a {
   color: inherit;
   text-decoration: none;

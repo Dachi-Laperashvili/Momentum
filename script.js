@@ -96,7 +96,7 @@ function createCard(
 
   // details div containing due date and priority and departament tags
   const details = document.createElement("div");
-  details.classList.add("task-details");
+  details.classList.add("task-details", "details--top");
 
   // list of priority and departament tags
   const tags = document.createElement("ul");
@@ -104,6 +104,7 @@ function createCard(
 
   // creating tag for priority with icon and name
   const priorityTag = document.createElement("li");
+  priorityTag.classList.add("priority");
   const prioritySvg = document.createElement("img");
   const prioritySpan = document.createElement("span");
 
@@ -115,6 +116,7 @@ function createCard(
 
   // departament
   const departmentTag = document.createElement("li");
+  departmentTag.classList.add("department");
   departmentTag.textContent = department;
 
   // due-date
@@ -132,11 +134,14 @@ function createCard(
 
   // uploader img and comments
   const bottomDetails = document.createElement("div");
-  bottomDetails.classList.add("task-details");
+  bottomDetails.classList.add("task-details", "details--bottom");
 
   const uploaderImg = document.createElement("img");
   uploaderImg.src = avatar;
-  uploaderImg.width = 31;
+  uploaderImg.style.width = "31px";
+  uploaderImg.style.maxHeight = "31px";
+  uploaderImg.alt = "Uploader avatar";
+  uploaderImg.className = "avatar";
 
   // comments
   const comments = document.createElement("div");

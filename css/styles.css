@@ -43,14 +43,9 @@ header {
 .container {
   padding: 3rem 12rem;
 }
-h1 {
-  font-weight: 600;
-  font-size: 3.4rem;
-  margin-bottom: 5rem;
-}
 
 .filter-container {
-  margin-bottom: 8rem;
+  margin-bottom: 7.9rem;
 }
 
 .filter-links {
@@ -105,6 +100,49 @@ h1 {
 /* tasks */
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
   padding: 2rem;
   border-radius: 1.5rem;
+  font-size: 14px;
+}
+
+.task-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.content {
+  margin: 0 3rem;
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comments,
+.priority {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.department {
+  width: 88px;
+  background-color: #ff66a8;
+  color: #fff;
+  padding: 5px 9px;
+  border-radius: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar {
+  border-radius: 50%;
 }
