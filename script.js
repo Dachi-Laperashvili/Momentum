@@ -87,7 +87,8 @@ function createCard(
   department,
   description,
   avatar,
-  comments_count
+  comments_count,
+  color
 ) {
   // card div
   const card = document.createElement("div");
@@ -157,6 +158,7 @@ function createCard(
   bottomDetails.append(uploaderImg, comments);
 
   card.append(details, content, bottomDetails);
+  card.style.border = `1px solid ${color}`;
 
   return card;
 }
@@ -169,6 +171,8 @@ async function displayTasks() {
 
       // if task status matches status column then adding task in that column
       statusColumns.forEach((column) => {
+        const statusTitle = column.querySelector(".status-title");
+
         // creating div for task
         const card = createCard(
           task.name,
@@ -178,7 +182,8 @@ async function displayTasks() {
           task.department.name,
           task.description,
           task.employee.avatar,
-          task.total_comments
+          task.total_comments,
+          window.getComputedStyle(statusTitle).backgroundColor
         );
 
         const name = task.status.name.toLowerCase().replace(/\s+/g, "-"); // status name without spaces
@@ -186,6 +191,8 @@ async function displayTasks() {
         if (column.classList.contains(name)) {
           column.appendChild(card); // adding task
         }
+        console.log(statusTitle);
+        console.log(window.getComputedStyle(statusTitle).backgroundColor);
       });
     });
   } catch (error) {
