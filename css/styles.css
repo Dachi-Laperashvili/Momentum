@@ -132,6 +132,11 @@ header {
   gap: 4px;
 }
 
+.priority {
+  padding: 4px;
+  border-radius: 5px;
+}
+
 .department {
   width: 88px;
   background-color: #ff66a8;

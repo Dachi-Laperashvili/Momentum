@@ -104,7 +104,17 @@ function createCard(
 
   // creating tag for priority with icon and name
   const priorityTag = document.createElement("li");
+  const priorityColors = {
+    დაბალი: "#08A508",
+    საშუალო: "#FFBE0B",
+    მაღალი: "#FA4D4D",
+  };
+
   priorityTag.classList.add("priority");
+  priorityTag.style.border = `0.5px solid ${priorityColors[priority]}`;
+
+  console.log(priorityColors.priority);
+
   const prioritySvg = document.createElement("img");
   const prioritySpan = document.createElement("span");
 
@@ -121,7 +131,7 @@ function createCard(
 
   // due-date
   const dueDate = document.createElement("span");
-  dueDate.textContent = date;
+  dueDate.textContent = new Date(date).toLocaleDateString();
 
   // task content
 
