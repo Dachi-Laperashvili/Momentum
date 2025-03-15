@@ -130,8 +130,29 @@ function createCard(
   departmentTag.textContent = department;
 
   // due-date
+  const months = [
+    "იანვ",
+    "თებ",
+    "მარტი",
+    "აპრ",
+    "მაისი",
+    "ივნ",
+    "ივლ",
+    "აგვ",
+    "სექტ",
+    "ოქტ",
+    "ნოე",
+    "დეკ",
+  ];
+
   const dueDate = document.createElement("span");
-  dueDate.textContent = new Date(date).toLocaleDateString();
+
+  const dateFormat = new Date(date);
+  const day = dateFormat.getUTCDay();
+  const month = dateFormat.getUTCMonth();
+  const year = dateFormat.getUTCFullYear();
+
+  dueDate.textContent = day + " " + months[month] + ", " + year;
 
   // task content
 
