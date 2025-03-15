@@ -161,7 +161,13 @@ function createCard(
   const taskTitle = document.createElement("h2");
   taskTitle.textContent = title;
   const taskDescription = document.createElement("p");
-  taskDescription.textContent = description;
+
+  // if description is longer than 100 words then adding ... after 100th word
+  if (description && description.length > 100) {
+    taskDescription.textContent = description.substring(0, 100) + "...";
+  } else {
+    taskDescription.textContent = description;
+  }
 
   // uploader img and comments
   const bottomDetails = document.createElement("div");

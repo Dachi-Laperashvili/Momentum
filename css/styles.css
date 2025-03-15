@@ -50,6 +50,7 @@ header {
 
 .filter-links {
   display: flex;
+  width: max-content;
   border: 1px dotted #dee2e6;
   border-radius: 10px;
   font-size: 1.6rem;
