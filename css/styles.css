@@ -44,6 +44,8 @@ header {
   padding: 3rem 12rem;
 }
 
+/* filters */
+
 .filter-container {
   margin-bottom: 7.9rem;
 }
@@ -63,6 +65,46 @@ header {
 
 .filter-link img {
   margin-left: 8px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  position: absolute;
+  top: 288px;
+  left: 118px;
+  width: 688px;
+  max-height: max-content;
+
+  font-size: 16px;
+  padding: 4rem 3rem 2rem 3rem;
+  border: 0.5px solid #8338ec;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.filtration-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+.filtration-links li {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.filter-btn {
+  width: 155px;
+  align-self: flex-end;
+  background-color: #8338ec;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 8px 2rem;
 }
 
 /* statuses */

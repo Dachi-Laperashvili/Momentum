@@ -80,3 +80,7 @@ img {
 .grid--4-cols {
   grid-template-columns: repeat(4, 1fr);
 }
+
+.hide {
+  display: none !important;
+}
