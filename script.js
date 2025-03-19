@@ -4,6 +4,169 @@
 **********************************      
 */
 
+// FILTRATIONS
+
+let activeFilter = null;
+
+// fetching departments
+async function getDepartments() {
+  try {
+    const res = await fetch(
+      "https://momentum.redberryinternship.ge/api/departments",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const departments = await res.json();
+
+    console.log(departments);
+    return departments;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// fetching priorities
+async function getPriorities() {
+  try {
+    const res = await fetch(
+      "https://momentum.redberryinternship.ge/api/priorities",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const priorities = await res.json();
+
+    console.log(priorities);
+    return priorities;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// fetching employees
+async function getEmployees() {
+  try {
+    const res = await fetch(
+      "https://momentum.redberryinternship.ge/api/employees",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${"9e6c0298-5b0f-4841-a699-c4e787ea043a"}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const employees = await res.json();
+
+    console.log(employees);
+    return employees;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// changing content of filters box
+function changeFiltersContent(list, svgLink) {
+  const filterList = document.querySelector(".filtration-links");
+  filterList.textContent = "";
+
+  list.forEach((item) => {
+    const filterLink = document.createElement("li");
+    const filterIcon = document.createElement("img");
+    const linkContent = document.createElement("div");
+    linkContent.classList.add("filter-content");
+
+    filterIcon.src = svgLink;
+
+    filterLink.appendChild(filterIcon);
+
+    // checking if item has avatar
+    if (item.avatar) {
+      const avatar = document.createElement("img");
+      avatar.src = item.avatar;
+      avatar.classList.add("filter-avatar");
+      linkContent.append(avatar);
+    }
+
+    //  checking if item has surname property for employees data
+    if (item.surname) {
+      linkContent.append(
+        document.createTextNode(item.name + " " + item.surname)
+      );
+    } else {
+      linkContent.append(document.createTextNode(item.name));
+    }
+
+    filterLink.append(linkContent);
+    filterList.append(filterLink);
+  });
+}
+
+async function loadDepartments() {
+  try {
+    const departments = await getDepartments();
+
+    document.querySelector(".department-link").addEventListener("click", () => {
+      if (activeFilter === "departments") {
+        document.querySelector(".filters").classList.toggle("hide");
+      } else {
+        changeFiltersContent(departments, "/assets/check.svg");
+        document.querySelector(".filters").classList.remove("hide");
+        activeFilter = "departments";
+      }
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+async function loadPriorities() {
+  try {
+    const priorities = await getPriorities();
+
+    document.querySelector(".priority-link").addEventListener("click", () => {
+      if (activeFilter === "priorities") {
+        document.querySelector(".filters").classList.toggle("hide");
+      } else {
+        changeFiltersContent(priorities, "/assets/purpleCheck.svg");
+        document.querySelector(".filters").classList.remove("hide");
+        activeFilter = "priorities";
+      }
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+async function loadEmployees() {
+  try {
+    const employees = await getEmployees();
+
+    document.querySelector(".employees-link").addEventListener("click", () => {
+      if (activeFilter === "employees") {
+        document.querySelector(".filters").classList.toggle("hide");
+      } else {
+        changeFiltersContent(employees, "/assets/purpleCheck.svg");
+        document.querySelector(".filters").classList.remove("hide");
+        activeFilter = "employees";
+      }
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+loadDepartments();
+loadPriorities();
+loadEmployees();
+
 // STATUSES
 
 // Getting task statuses from momentum api
@@ -112,8 +275,6 @@ function createCard(
 
   priorityTag.classList.add("priority");
   priorityTag.style.border = `0.5px solid ${priorityColors[priority]}`;
-
-  console.log(priorityColors.priority);
 
   const prioritySvg = document.createElement("img");
   const prioritySpan = document.createElement("span");
