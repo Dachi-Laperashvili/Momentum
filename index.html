@@ -12,9 +12,11 @@
       <img src="/assets/logo.svg" alt="Momentum logo" />
       <nav class="navbar">
         <ul class="nav-list">
-          <li><a href="#" class="nav-link">თანამშრომლის შექმნა</a></li>
           <li>
-            <a href="#" class="nav-link cta-link"
+            <a href="#" class="nav-link white-btn">თანამშრომლის შექმნა</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link cta-link purple-btn"
               ><img
                 src="assets/add.svg"
                 alt="Add Icon"
@@ -66,8 +68,58 @@
       <div class="tasks-container grid grid--4-cols">
         <div class="filters hide">
           <ul class="filtration-links"></ul>
-          <button class="filter-btn">არჩევა</button>
+          <button class="filter-btn purple-btn">არჩევა</button>
         </div>
+      </div>
+
+      <div class="modal-overlay hide">
+        <dialog class="modal" open>
+          <img
+            class="modal-cancel-svg"
+            src="/assets/Cancel.svg"
+            alt="close modal button"
+          />
+          <form class="modal-form">
+            <div class="modal-content">
+              <h1 class="modal-header">თანამშრომლის დამატება</h1>
+              <div class="modal-row">
+                <div class="modal-col">
+                  <label for="first-name"> სახელი* </label>
+                  <input type="text" id="first-name" required />
+                </div>
+                <div class="modal-col">
+                  <label for="last-name"> გვარი* </label>
+                  <input type="text" id="last-name" required />
+                </div>
+              </div>
+              <div class="modal-col modal-img-div">
+                <p>ავატარი*</p>
+                <div class="form-img-box">
+                  <label for="form-avatar" class="avatar-label">
+                    <img src="/assets/gallery-export.svg" alt="form avatar" />
+                    <p>ატვირთე ფოტო</p>
+                  </label>
+                  <input
+                    type="file"
+                    id="form-avatar"
+                    class="file-input"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="modal-col">
+                <label for="department">დეპარტამენტი*</label>
+                <select id="department" name="departments" required></select>
+              </div>
+            </div>
+            <div class="modal-row modal-btns">
+              <button class="modal-cancel white-btn">გაუქმება</button>
+              <button class="modal-add purple-btn" type="submit">
+                დაამატე თანამშრომელი
+              </button>
+            </div>
+          </form>
+        </dialog>
       </div>
     </main>
     <script src="/script.js"></script>

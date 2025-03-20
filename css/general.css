@@ -81,6 +81,23 @@ img {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.purple-btn {
+  background-color: #8338ec;
+  color: #fff;
+}
+
+.purple-btn:hover {
+  background-color: #b588f4;
+}
+
+.white-btn {
+  border: 1px solid #8338ec;
+}
+
+.white-btn:hover {
+  border-color: #b588f4;
+}
+
 .hide {
   display: none !important;
 }

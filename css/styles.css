@@ -15,14 +15,9 @@ header {
 }
 
 .nav-link {
-  border: 1px solid #8338ec;
   border-radius: 5px;
   padding: 1rem 2rem;
   transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  border-color: #b588f4;
 }
 
 .cta-link {
@@ -31,8 +26,6 @@ header {
   padding: 0.7rem 2rem;
   align-items: center;
   gap: 4px;
-  background-color: #8338ec;
-  color: #fff;
 }
 
 .cta-link:hover {
@@ -83,7 +76,7 @@ header {
   border: 0.5px solid #8338ec;
   background-color: #fff;
   border-radius: 10px;
-  z-index: 999;
+  z-index: 100;
 }
 
 .filtration-links {
@@ -118,19 +111,12 @@ header {
 .filter-btn {
   width: 155px;
   align-self: flex-end;
-  background-color: #8338ec;
   font-size: 16px;
-  color: #fff;
   border: none;
   border-radius: 2rem;
   padding: 8px 2rem;
   cursor: pointer;
 }
-
-.filter-btn:hover {
-  background-color: #b588f4;
-}
-
 /* statuses */
 
 .status-column {
@@ -217,4 +203,114 @@ header {
 
 .avatar {
   border-radius: 50%;
+}
+
+/* MODAL  */
+.modal-overlay {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 15, 16, 0.15);
+  backdrop-filter: blur(4px);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 91.3rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 4rem 5rem 6rem 5rem;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+
+  z-index: 1000;
+}
+
+.modal-cancel-svg {
+  float: right;
+  cursor: pointer;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  color: #343a40;
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
+  margin-top: 11.7rem;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 1rem;
+  border-radius: 6px;
+  border: 2px solid #ced4da;
+}
+
+.modal-content select {
+  width: 50%;
+  justify-self: start;
+}
+
+.modal-header {
+  text-align: center;
+  color: #212529;
+  font-size: 3.2rem;
+  font-weight: 500;
+}
+.modal-row {
+  display: flex;
+  gap: 4.5rem;
+}
+
+.modal-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+}
+
+.form-img-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 12rem;
+  border-radius: 8px;
+  border: 1px dashed #ced4da;
+}
+
+.avatar-label {
+  cursor: pointer;
+}
+
+.file-input {
+  display: none;
+}
+
+.modal-btns {
+  float: right;
+  gap: 2.2rem;
+}
+
+.modal-cancel {
+  font-size: 1.6rem;
+  border-radius: 5px;
+  padding: 1rem 1.6rem;
+  cursor: pointer;
+}
+
+.modal-add {
+  border: none;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
 }
