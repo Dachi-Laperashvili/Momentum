@@ -86,13 +86,8 @@
               <h1 class="modal-header">თანამშრომლის დამატება</h1>
               <div class="modal-row">
                 <div class="modal-col">
-                  <label for="first-name"> სახელი* </label>
-                  <input
-                    type="text"
-                    id="first-name"
-                    name="first-name"
-                    required
-                  />
+                  <label for="name"> სახელი* </label>
+                  <input type="text" id="name" name="name" required />
 
                   <ul class="requirements">
                     <li>
@@ -105,8 +100,8 @@
                   </ul>
                 </div>
                 <div class="modal-col">
-                  <label for="last-name"> გვარი* </label>
-                  <input type="text" id="last-name" name="last-name" required />
+                  <label for="surname"> გვარი* </label>
+                  <input type="text" id="surname" name="surname" required />
                   <ul class="requirements">
                     <li>
                       <span class="check">&#10003;</span> მინიმუმ 2 სიმბოლო
@@ -136,7 +131,9 @@
               </div>
               <div class="modal-col">
                 <label for="department">დეპარტამენტი*</label>
-                <select id="department" name="departments" required></select>
+                <select id="department" name="departments" required>
+                  <option disabled selected value></option>
+                </select>
               </div>
             </div>
             <div class="modal-row modal-btns">
