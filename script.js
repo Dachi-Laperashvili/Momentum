@@ -420,6 +420,40 @@ const deleteImg = document.getElementById("deleteImg");
 const imgErorr = document.getElementById("imgError");
 const uploadBox = document.querySelector(".upload-box");
 
+// name validation
+nameInput.addEventListener("input", () => {
+  const firstName = nameInput.value;
+
+  if (firstName.length < 2) {
+    document.querySelector(".name-min").style.color = "#FA4D4D";
+  } else {
+    document.querySelector(".name-min").style.color = "#08A508";
+  }
+
+  if (firstName.length > 255) {
+    document.querySelector(".name-max").style.color = "#FA4D4D";
+  } else {
+    document.querySelector(".name-max").style.color = "#08A508";
+  }
+});
+
+// Surname validation
+surnameInput.addEventListener("input", () => {
+  const surname = surnameInput.value;
+
+  if (surname.length < 2) {
+    document.querySelector(".surname-min").style.color = "#FA4D4D";
+  } else {
+    document.querySelector(".surname-min").style.color = "#08A508";
+  }
+
+  if (surname.length > 255) {
+    document.querySelector(".surname-max").style.color = "#FA4D4D";
+  } else {
+    document.querySelector(".surname-max").style.color = "#08A508";
+  }
+});
+
 file.addEventListener("change", handleImgSelect);
 
 deleteImg.addEventListener("click", () => {
