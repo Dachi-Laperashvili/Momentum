@@ -355,3 +355,91 @@ header {
   right: 0;
   cursor: pointer;
 }
+
+/* ADD TASKS */
+
+.addTasks-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 16.1rem;
+
+  font-size: 1.6rem;
+  color: #343a40;
+}
+
+.addTasks-form .requirements {
+  display: flex;
+  flex-direction: column;
+  font-weight: 350;
+  font-size: 1rem;
+  color: #6c757d;
+  gap: 2px;
+}
+
+.addTasks-row {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.addTasks-main-col {
+  width: 55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+}
+
+.addTasks-col {
+  width: 55rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.addTasks-second-col {
+  margin-right: 37rem;
+  width: 55rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.department-div {
+  margin-bottom: 6.1rem;
+}
+
+.employee-div {
+  margin-bottom: 16rem;
+}
+
+.addTasks-form input,
+.addTasks-form select,
+.addTasks-form textarea {
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #dee2e6;
+  padding: 14px;
+}
+
+.addTasks-form input:focus,
+.addTasks-form select:focus,
+.addTasks-form textarea:focus {
+  border: 1px solid #8338ec;
+}
+
+.addTasks-description {
+  width: 55rem;
+  height: 13.3rem;
+  resize: none;
+}
+.addTasks-button-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14.5rem;
+}
+
+.addTask-btn {
+  border: none;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}

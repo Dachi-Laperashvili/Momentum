@@ -618,3 +618,63 @@ form.addEventListener("submit", (e) => {
   closeModal();
   window.location.reload();
 });
+
+document.querySelector(".cta-link").addEventListener("click", () => {
+  window.location.href = "/add-tasks.html";
+});
+
+// Add Tasks Form
+
+async function departmentsInTasksForm() {
+  try {
+    const departments = await getDepartments();
+    const formSelect = document.getElementById("tasksDepartment");
+
+    departments.forEach((department) => {
+      const option = document.createElement("option");
+      option.textContent = department.name;
+      option.value = department.id;
+      formSelect.append(option);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+departmentsInTasksForm();
+
+async function prioritiesInTasksForm() {
+  try {
+    const priorities = await getPriorities();
+    const prioritySelect = document.getElementById("taskPriority");
+
+    priorities.forEach((department) => {
+      const option = document.createElement("option");
+      option.textContent = department.name;
+      option.value = department.id;
+      prioritySelect.append(option);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+prioritiesInTasksForm();
+
+async function statusesInTasksForm() {
+  try {
+    const statuses = await getStatuses();
+    const statusSelect = document.getElementById("status");
+
+    statuses.forEach((department) => {
+      const option = document.createElement("option");
+      option.textContent = department.name;
+      option.value = department.id;
+      statusSelect.append(option);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+statusesInTasksForm();

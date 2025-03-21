@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/general.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Momentum</title>
+  </head>
+  <body>
+    <div class="modal-overlay hide">
+      <dialog class="modal" open>
+        <img
+          class="modal-cancel-svg modal-cancel"
+          src="/assets/Cancel.svg"
+          alt="close modal button"
+        />
+        <form class="modal-form">
+          <div class="modal-content">
+            <h1 class="modal-header">თანამშრომლის დამატება</h1>
+            <div class="modal-row">
+              <div class="modal-col">
+                <label for="name"> სახელი* </label>
+                <input type="text" id="name" name="name" required />
+
+                <ul class="requirements">
+                  <li class="name-min">
+                    <span class="check name-min">&#10003;</span> მინიმუმ 2
+                    სიმბოლო
+                  </li>
+                  <li class="name-max">
+                    <span class="check name-max">&#10003;</span>
+                    მაქსიმუმ 255 სიმბოლო
+                  </li>
+                  <li class="name-letters">
+                    <span class="check name-letters">&#10003; </span>
+                    შეიცავს მხოლოდ ასოებს
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-col">
+                <label for="surname"> გვარი* </label>
+                <input type="text" id="surname" name="surname" required />
+                <ul class="requirements">
+                  <li class="surname-min">
+                    <span class="check surname-min">&#10003;</span> მინიმუმ 2
+                    სიმბოლო
+                  </li>
+                  <li class="surname-max">
+                    <span class="check surname-max">&#10003; </span>
+                    მაქსიმუმ 255 სიმბოლო
+                  </li>
+                  <li class="surname-letters">
+                    <span class="check surname-letters">&#10003; </span>
+                    შეიცავს მხოლოდ ასოებს
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="modal-col modal-img-div">
+              <p>ავატარი*</p>
+              <div class="form-img-box">
+                <div class="upload-box">
+                  <label for="avatar" class="avatar-label">
+                    <img src="/assets/gallery-export.svg" alt="form avatar" />
+                    <p>ატვირთე ფოტო</p>
+                  </label>
+                  <input
+                    type="file"
+                    id="avatar"
+                    name="avatar"
+                    class="file-input"
+                    accept="image/*"
+                    required
+                  />
+                  <p id="imgError">ფაილის ზომა უნდა იყოს მაქსიმუმ 600KB.</p>
+                </div>
+                <div class="preview-box">
+                  <img
+                    src=""
+                    alt="Avatar preview"
+                    id="avatarPreview"
+                    class="avatar"
+                  />
+                  <img
+                    src="/assets/delete_img.svg"
+                    alt="delete image icon"
+                    id="deleteImg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-col">
+              <label for="department">დეპარტამენტი*</label>
+              <select id="department" name="department" required>
+                <option disabled selected value></option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-row modal-btns">
+            <button class="modal-cancel white-btn">გაუქმება</button>
+            <button class="modal-add purple-btn" type="submit">
+              დაამატე თანამშრომელი
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </div>
+    <header>
+      <img src="/assets/logo.svg" alt="Momentum logo" />
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li>
+            <a href="#" class="nav-link white-btn" id="open-modal"
+              >თანამშრომლის შექმნა</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link cta-link purple-btn"
+              ><img
+                src="assets/add.svg"
+                alt="Add Icon"
+                width="20"
+                height="20"
+              />შექმენი ახალი დავალება</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1>შექმენი ახალი დავალება</h1>
+      <div class="add-tasks-container">
+        <form class="addTasks-form">
+          <div class="addTasks-main-col">
+            <div class="addTasks-col">
+              <label for="title"> სათაური* </label>
+              <input type="text" id="title" name="title" required />
+
+              <ul class="requirements">
+                <li class="title-min">
+                 მინიმუმ 3 სიმბოლო
+                </li>
+                <li class="title-max">
+                  მაქსიმუმ 255 სიმბოლო
+                </li>
+              </ul>
+            </div>
+
+            <div class="addTasks-col">
+              <label for="description"> აღწერა</label>
+
+              <textarea class="addTasks-description" name="description" id="description"></textarea>
+
+              <ul class="requirements">
+                <li class="description-min">
+                  მინიმუმ 4 სიმბოლო
+                </li>
+                <li class="description-max">
+                  მაქსიმუმ 255 სიმბოლო
+                </li>
+              </ul>
+            </div>
+
+            <div class="addTasks-row">
+              <div class="addTasks-col">
+                <label for="priority"> პრიორიტეტი*</label>
+
+                <select name="priority" id="taskPriority" required></select>
+              </div>
+
+              <div class="addTasks-col">
+                <label for="status"> სტატუსი*</label>
+
+                <select name="status" id="status" required></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="addTasks-second-col">
+            <div class="addTasks-col department-div">
+              <label for="department"> დეპარტამენტი*</label>
+
+              <select name="department" id="tasksDepartment" required></select>
+            </div>
+
+            <div class="addTasks-col employee-div">
+              <label for="employee"> პასუხისმგებელი თანამშრომელი</label>
+
+              <select name="employee" id="employee" required></select>
+            </div>
+
+            <div class="addTasks-col">
+              <div class="addTasks-col deadline-div">
+                <label for="deadline"> დედლაინი*</label>
+
+                <input type="date" name="deadline" id="deadline" required></input>
+              </div>
+            </div>
+
+            <div class="addTasks-button-box">
+              <button class="addTask-btn purple-btn" type="submit">
+                დავალების შექმნა
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>
