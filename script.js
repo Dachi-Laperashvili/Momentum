@@ -408,82 +408,6 @@ displayTasks();
 
 const form = document.querySelector(".modal-form");
 
-// FORM SUBMISSION AND VALIDATION
-const file = document.getElementById("avatar");
-
-const nameInput = document.getElementById("name");
-const surnameInput = document.getElementById("surname");
-
-const previewBox = document.querySelector(".preview-box");
-const preview = document.getElementById("avatarPreview");
-const deleteImg = document.getElementById("deleteImg");
-const imgErorr = document.getElementById("imgError");
-const uploadBox = document.querySelector(".upload-box");
-
-// name validation
-nameInput.addEventListener("input", () => {
-  const firstName = nameInput.value;
-
-  if (firstName.length < 2) {
-    document.querySelector(".name-min").style.color = "#FA4D4D";
-  } else {
-    document.querySelector(".name-min").style.color = "#08A508";
-  }
-
-  if (firstName.length > 255) {
-    document.querySelector(".name-max").style.color = "#FA4D4D";
-  } else {
-    document.querySelector(".name-max").style.color = "#08A508";
-  }
-});
-
-// Surname validation
-surnameInput.addEventListener("input", () => {
-  const surname = surnameInput.value;
-
-  if (surname.length < 2) {
-    document.querySelector(".surname-min").style.color = "#FA4D4D";
-  } else {
-    document.querySelector(".surname-min").style.color = "#08A508";
-  }
-
-  if (surname.length > 255) {
-    document.querySelector(".surname-max").style.color = "#FA4D4D";
-  } else {
-    document.querySelector(".surname-max").style.color = "#08A508";
-  }
-});
-
-file.addEventListener("change", handleImgSelect);
-
-deleteImg.addEventListener("click", () => {
-  file.value = "";
-  uploadBox.style.display = "block";
-  previewBox.style.display = "none";
-  imgErorr.style.display = "none";
-});
-
-function handleImgSelect(e) {
-  const img = e.target.files[0];
-
-  if (img) {
-    if (img.size / 1024 > 600) {
-      imgErorr.style.display = "block";
-    } else {
-      imgErorr.style.display = "none";
-
-      const fileReader = new FileReader();
-
-      fileReader.onload = (e) => {
-        preview.src = e.target.result;
-        uploadBox.style.display = "none";
-        previewBox.style.display = "flex";
-      };
-      fileReader.readAsDataURL(img); // reading contents of file
-    }
-  }
-}
-
 // adding departments in select
 
 async function addDepartmentsInForm() {
@@ -517,10 +441,14 @@ const showModal = () => {
 const closeModal = () => {
   document.querySelector(".name-min").style.color = "#343a40";
   document.querySelector(".name-max").style.color = "#343a40";
+  document.querySelector(".surname-letters").style.color = "#343a40";
   document.querySelector(".surname-min").style.color = "#343a40";
   document.querySelector(".surname-max").style.color = "#343a40";
+  document.querySelector(".surname-letters").style.color = "#343a40";
   imgErorr.style.display = "none";
   preview.src = "";
+  nameInput.style.borderColor = "#ced4da";
+  surnameInput.style.borderColor = "#ced4da";
   uploadBox.style.display = "block";
   previewBox.style.display = "none";
   form.reset();
@@ -541,4 +469,152 @@ overlay.addEventListener("click", (e) => {
   if (e.target === overlay) {
     closeModal();
   }
+});
+
+// FORM SUBMISSION AND VALIDATION
+
+const file = document.getElementById("avatar");
+
+const nameInput = document.getElementById("name");
+const surnameInput = document.getElementById("surname");
+
+const previewBox = document.querySelector(".preview-box");
+const preview = document.getElementById("avatarPreview");
+const deleteImg = document.getElementById("deleteImg");
+const imgErorr = document.getElementById("imgError");
+const uploadBox = document.querySelector(".upload-box");
+
+// separated function for input validation
+
+function validateInput(input, minCheck, maxCheck, lettersCheck) {
+  const value = input.value;
+  const regex = /^[A-Za-zა-ჰ]+$/;
+
+  let isValid = true;
+  if (value.length < 2) {
+    minCheck.style.color = "#FA4D4D";
+    input.style.borderColor = "#FA4D4D";
+    isValid = false;
+  } else {
+    minCheck.style.color = "#08A508";
+  }
+
+  if (value.length > 255) {
+    maxCheck.style.color = "#FA4D4D";
+    input.style.borderColor = "#FA4D4D";
+    isValid = false;
+  } else {
+    maxCheck.style.color = "#08A508";
+  }
+
+  if (!regex.test(value)) {
+    lettersCheck.style.color = "#FA4D4D";
+    isValid = false;
+    input.style.borderColor = "#FA4D4D";
+  } else {
+    lettersCheck.style.color = "#08A508";
+  }
+
+  if (isValid) {
+    input.style.borderColor = "#08A508";
+  }
+}
+
+// name validation
+
+nameInput.addEventListener("input", () => {
+  validateInput(
+    nameInput,
+    document.querySelector(".name-min"),
+    document.querySelector(".name-max"),
+    document.querySelector(".name-letters")
+  );
+});
+
+// Surname validation
+surnameInput.addEventListener("input", () => {
+  validateInput(
+    surnameInput,
+    document.querySelector(".surname-min"),
+    document.querySelector(".surname-max"),
+    document.querySelector(".surname-letters")
+  );
+});
+
+file.addEventListener("change", handleImgSelect);
+
+deleteImg.addEventListener("click", () => {
+  file.value = "";
+  uploadBox.style.display = "block";
+  previewBox.style.display = "none";
+  imgErorr.style.display = "none";
+});
+
+function handleImgSelect(e) {
+  const img = e.target.files[0];
+
+  if (img) {
+    if (img.size / 1024 > 600) {
+      imgErorr.style.display = "block";
+    } else {
+      imgErorr.style.display = "none";
+
+      const fileReader = new FileReader();
+
+      fileReader.onload = (e) => {
+        preview.src = e.target.result;
+        uploadBox.style.display = "none";
+        previewBox.style.display = "flex";
+      };
+      fileReader.readAsDataURL(img); // reading contents of file
+    }
+  }
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const firstName = nameInput.value;
+  const surname = surnameInput.value;
+  const avatar = file.files[0];
+  const department = document.getElementById("department").value;
+  const regex = /^[A-Za-zა-ჰ]+$/;
+
+  let validated = true;
+
+  if (firstName.length < 2 || firstName.length > 255) {
+    validated = false;
+  }
+
+  if (surname.length < 2 || surname.length > 255) {
+    validated = false;
+  }
+
+  if (!regex.test(firstName) || !regex.test(surname)) {
+    validated = false;
+  }
+
+  if (!avatar) {
+    validated = false;
+  }
+
+  if (!validated) return;
+
+  const formData = new FormData();
+  formData.append("name", firstName);
+  formData.append("surname", surname);
+  formData.append("avatar", avatar);
+  formData.append("department_id", department);
+
+  fetch("https://momentum.redberryinternship.ge/api/employees", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  })
+    .then((res) => res.json())
+    .catch((error) => console.error(error));
+
+  closeModal();
+  window.location.reload();
 });
