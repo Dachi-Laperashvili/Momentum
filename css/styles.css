@@ -386,6 +386,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 5.5rem;
+  margin-left: 5.5rem;
 }
 
 .addTasks-col {
