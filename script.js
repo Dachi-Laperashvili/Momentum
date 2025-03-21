@@ -441,7 +441,7 @@ const showModal = () => {
 const closeModal = () => {
   document.querySelector(".name-min").style.color = "#343a40";
   document.querySelector(".name-max").style.color = "#343a40";
-  document.querySelector(".surname-letters").style.color = "#343a40";
+  document.querySelector(".name-letters").style.color = "#343a40";
   document.querySelector(".surname-min").style.color = "#343a40";
   document.querySelector(".surname-max").style.color = "#343a40";
   document.querySelector(".surname-letters").style.color = "#343a40";
