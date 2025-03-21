@@ -3,6 +3,7 @@
       MAIN PAGE FUNCTIONALITY
 **********************************      
 */
+const token = "9e6c0298-5b0f-4841-a699-c4e787ea043a";
 
 // FILTRATIONS
 
@@ -58,7 +59,7 @@ async function getEmployees() {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${"9e6c0298-5b0f-4841-a699-c4e787ea043a"}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       }
@@ -226,7 +227,7 @@ async function getTasks() {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${"9e6c0298-5b0f-4841-a699-c4e787ea043a"}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       }
@@ -405,6 +406,50 @@ displayTasks();
 
 // MODAL FUNCTIONALITY
 
+const form = document.querySelector(".modal-form");
+
+// FORM SUBMISSION AND VALIDATION
+const file = document.getElementById("avatar");
+
+const nameInput = document.getElementById("name");
+const surnameInput = document.getElementById("surname");
+
+const previewBox = document.querySelector(".preview-box");
+const preview = document.getElementById("avatarPreview");
+const deleteImg = document.getElementById("deleteImg");
+const imgErorr = document.getElementById("imgError");
+const uploadBox = document.querySelector(".upload-box");
+
+file.addEventListener("change", handleImgSelect);
+
+deleteImg.addEventListener("click", () => {
+  file.value = "";
+  uploadBox.style.display = "block";
+  previewBox.style.display = "none";
+  imgErorr.style.display = "none";
+});
+
+function handleImgSelect(e) {
+  const img = e.target.files[0];
+
+  if (img) {
+    if (img.size / 1024 > 600) {
+      imgErorr.style.display = "block";
+    } else {
+      imgErorr.style.display = "none";
+
+      const fileReader = new FileReader();
+
+      fileReader.onload = (e) => {
+        preview.src = e.target.result;
+        uploadBox.style.display = "none";
+        previewBox.style.display = "flex";
+      };
+      fileReader.readAsDataURL(img); // reading contents of file
+    }
+  }
+}
+
 // adding departments in select
 
 async function addDepartmentsInForm() {
@@ -415,6 +460,7 @@ async function addDepartmentsInForm() {
     departments.forEach((department) => {
       const option = document.createElement("option");
       option.textContent = department.name;
+      option.value = department.id;
       formSelect.append(option);
     });
   } catch (error) {
@@ -434,7 +480,16 @@ const showModal = () => {
   dialog.show();
 };
 
-const closeModal = (e) => {
+const closeModal = () => {
+  document.querySelector(".name-min").style.color = "#343a40";
+  document.querySelector(".name-max").style.color = "#343a40";
+  document.querySelector(".surname-min").style.color = "#343a40";
+  document.querySelector(".surname-max").style.color = "#343a40";
+  imgErorr.style.display = "none";
+  preview.src = "";
+  uploadBox.style.display = "block";
+  previewBox.style.display = "none";
+  form.reset();
   overlay.classList.add("hide");
   dialog.close();
 };

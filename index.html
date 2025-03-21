@@ -90,12 +90,13 @@
                   <input type="text" id="name" name="name" required />
 
                   <ul class="requirements">
-                    <li>
-                      <span class="check">&#10003;</span> მინიმუმ 2 სიმბოლო
-                    </li>
-                    <li>
-                      <span class="check">&#10003;</span> მინიმუმ მაქსიმუმ 255
+                    <li class="name-min">
+                      <span class="check name-min">&#10003;</span> მინიმუმ 2
                       სიმბოლო
+                    </li>
+                    <li class="name-max">
+                      <span class="check name-max">&#10003;</span>
+                      მაქსიმუმ 255 სიმბოლო
                     </li>
                   </ul>
                 </div>
@@ -103,12 +104,13 @@
                   <label for="surname"> გვარი* </label>
                   <input type="text" id="surname" name="surname" required />
                   <ul class="requirements">
-                    <li>
-                      <span class="check">&#10003;</span> მინიმუმ 2 სიმბოლო
-                    </li>
-                    <li>
-                      <span class="check">&#10003; </span> მინიმუმ მაქსიმუმ 255
+                    <li class="surname-min">
+                      <span class="check surname-min">&#10003;</span> მინიმუმ 2
                       სიმბოლო
+                    </li>
+                    <li class="surname-max">
+                      <span class="check surname-max">&#10003; </span>
+                      მაქსიმუმ 255 სიმბოლო
                     </li>
                   </ul>
                 </div>
@@ -116,22 +118,39 @@
               <div class="modal-col modal-img-div">
                 <p>ავატარი*</p>
                 <div class="form-img-box">
-                  <label for="form-avatar" class="avatar-label">
-                    <img src="/assets/gallery-export.svg" alt="form avatar" />
-                    <p>ატვირთე ფოტო</p>
-                  </label>
-                  <input
-                    type="file"
-                    id="form-avatar"
-                    name="form-avatar"
-                    class="file-input"
-                    required
-                  />
+                  <div class="upload-box">
+                    <label for="avatar" class="avatar-label">
+                      <img src="/assets/gallery-export.svg" alt="form avatar" />
+                      <p>ატვირთე ფოტო</p>
+                    </label>
+                    <input
+                      type="file"
+                      id="avatar"
+                      name="avatar"
+                      class="file-input"
+                      accept="image/*"
+                      required
+                    />
+                    <p id="imgError">ფაილის ზომა უნდა იყოს მაქსიმუმ 600KB.</p>
+                  </div>
+                  <div class="preview-box">
+                    <img
+                      src=""
+                      alt="Avatar preview"
+                      id="avatarPreview"
+                      class="avatar"
+                    />
+                    <img
+                      src="/assets/delete_img.svg"
+                      alt="delete image icon"
+                      id="deleteImg"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="modal-col">
                 <label for="department">დეპარტამენტი*</label>
-                <select id="department" name="departments" required>
+                <select id="department" name="department" required>
                   <option disabled selected value></option>
                 </select>
               </div>
