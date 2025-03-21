@@ -207,8 +207,9 @@ header {
 
 /* MODAL  */
 .modal-overlay {
-  position: fixed;
   z-index: 999;
+  position: fixed;
+  display: flex;
   top: 0;
   left: 0;
   width: 100%;
@@ -217,7 +218,7 @@ header {
   backdrop-filter: blur(4px);
 }
 .modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -275,6 +276,17 @@ header {
   flex-direction: column;
   flex: 1;
   gap: 6px;
+}
+
+.requirements {
+  font-size: 1rem;
+  font-weight: 350;
+}
+
+.check {
+  color: #6c757d;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .form-img-box {

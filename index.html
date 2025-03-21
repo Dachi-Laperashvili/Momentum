@@ -13,7 +13,9 @@
       <nav class="navbar">
         <ul class="nav-list">
           <li>
-            <a href="#" class="nav-link white-btn">თანამშრომლის შექმნა</a>
+            <a href="#" class="nav-link white-btn" id="open-modal"
+              >თანამშრომლის შექმნა</a
+            >
           </li>
           <li>
             <a href="#" class="nav-link cta-link purple-btn"
@@ -75,7 +77,7 @@
       <div class="modal-overlay hide">
         <dialog class="modal" open>
           <img
-            class="modal-cancel-svg"
+            class="modal-cancel-svg modal-cancel"
             src="/assets/Cancel.svg"
             alt="close modal button"
           />
@@ -85,11 +87,35 @@
               <div class="modal-row">
                 <div class="modal-col">
                   <label for="first-name"> სახელი* </label>
-                  <input type="text" id="first-name" required />
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="first-name"
+                    required
+                  />
+
+                  <ul class="requirements">
+                    <li>
+                      <span class="check">&#10003;</span> მინიმუმ 2 სიმბოლო
+                    </li>
+                    <li>
+                      <span class="check">&#10003;</span> მინიმუმ მაქსიმუმ 255
+                      სიმბოლო
+                    </li>
+                  </ul>
                 </div>
                 <div class="modal-col">
                   <label for="last-name"> გვარი* </label>
-                  <input type="text" id="last-name" required />
+                  <input type="text" id="last-name" name="last-name" required />
+                  <ul class="requirements">
+                    <li>
+                      <span class="check">&#10003;</span> მინიმუმ 2 სიმბოლო
+                    </li>
+                    <li>
+                      <span class="check">&#10003; </span> მინიმუმ მაქსიმუმ 255
+                      სიმბოლო
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="modal-col modal-img-div">
@@ -102,6 +128,7 @@
                   <input
                     type="file"
                     id="form-avatar"
+                    name="form-avatar"
                     class="file-input"
                     required
                   />

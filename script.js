@@ -4,6 +4,35 @@
 **********************************      
 */
 
+// MODAL
+const dialog = document.querySelector("dialog");
+const overlay = document.querySelector(".modal-overlay");
+
+const showModal = () => {
+  overlay.classList.remove("hide");
+  dialog.show();
+};
+
+const closeModal = (e) => {
+  overlay.classList.add("hide");
+  dialog.close();
+};
+
+// opening and displaying modal
+document.getElementById("open-modal").addEventListener("click", showModal);
+
+// closing modal when clicking close buttons
+document.querySelectorAll(".modal-cancel").forEach((btn) => {
+  btn.addEventListener("click", closeModal);
+});
+
+// closing modal when clicking on overlay
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) {
+    closeModal();
+  }
+});
+
 // FILTRATIONS
 
 let activeFilter = null;
