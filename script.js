@@ -516,7 +516,7 @@ function validateInput(input, minCheck, maxCheck, lettersCheck) {
   }
 
   if (isValid) {
-    input.style.borderColor = "#08A508";
+    input.style.borderColor = "#ced4da";
   }
 }
 
@@ -648,10 +648,10 @@ async function prioritiesInTasksForm() {
     const priorities = await getPriorities();
     const prioritySelect = document.getElementById("taskPriority");
 
-    priorities.forEach((department) => {
+    priorities.forEach((priority) => {
       const option = document.createElement("option");
-      option.textContent = department.name;
-      option.value = department.id;
+      option.textContent = priority.name;
+      option.value = priority.id;
       prioritySelect.append(option);
     });
   } catch (error) {
@@ -666,10 +666,10 @@ async function statusesInTasksForm() {
     const statuses = await getStatuses();
     const statusSelect = document.getElementById("status");
 
-    statuses.forEach((department) => {
+    statuses.forEach((status) => {
       const option = document.createElement("option");
-      option.textContent = department.name;
-      option.value = department.id;
+      option.textContent = status.name;
+      option.value = status.id;
       statusSelect.append(option);
     });
   } catch (error) {
@@ -678,3 +678,21 @@ async function statusesInTasksForm() {
 }
 
 statusesInTasksForm();
+
+async function employeesInTasksForm() {
+  try {
+    const employees = await getEmployees();
+    const employeeSelect = document.getElementById("employee");
+
+    employees.forEach((employee) => {
+      const option = document.createElement("option");
+      option.textContent = employee.name + " " + employee.surname;
+      option.value = employee.id;
+      employeeSelect.append(option);
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+employeesInTasksForm();
