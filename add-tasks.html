@@ -165,9 +165,9 @@
 
             <div class="addTasks-row">
               <div class="addTasks-col">
-                <label for="priority"> პრიორიტეტი*</label>
+                <label for="taskPriority"> პრიორიტეტი*</label>
 
-                <select name="priority" id="taskPriority" required></select>
+                <select name="taskPriority" id="taskPriority" required></select>
               </div>
 
               <div class="addTasks-col">
@@ -180,15 +180,17 @@
 
           <div class="addTasks-second-col">
             <div class="addTasks-col department-div">
-              <label for="department"> დეპარტამენტი*</label>
+              <label for="tasksDepartment"> დეპარტამენტი*</label>
 
-              <select name="department" id="tasksDepartment" required></select>
+              <select name="tasksDepartment" id="tasksDepartment" required>
+                <option selected disabled value>აირჩიეთ დეპარტამენტი</option>
+              </select>
             </div>
 
             <div class="addTasks-col employee-div">
-              <label for="employee"> პასუხისმგებელი თანამშრომელი*</label>
+              <label for="employee" class="employee_text"> პასუხისმგებელი თანამშრომელი*</label>
 
-              <select name="employee" id="employee" required></select>
+              <select name="employee" id="employee" required disabled></select>
             </div>
 
             <div class="addTasks-col">

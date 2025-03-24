@@ -698,16 +698,71 @@ async function statusesInTasksForm() {
 
 statusesInTasksForm();
 
-async function employeesInTasksForm() {
+//  make seperate function to only return employees of choosen department
+
+async function getEmployeesByDepartment(department_id) {
   try {
     const employees = await getEmployees();
-    const employeeSelect = document.getElementById("employee");
 
-    employees.forEach((employee) => {
-      const option = document.createElement("option");
-      option.textContent = employee.name + " " + employee.surname;
-      option.value = employee.id;
-      employeeSelect.append(option);
+    return employees.filter(
+      (employee) => employee.department.id === department_id
+    );
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function employeesInTasksForm() {
+  try {
+    const departmentSelect = document.getElementById("tasksDepartment");
+    const employeeSelect = document.getElementById("employee");
+    const employeeText = document.querySelector(".employee_text");
+
+    // disable employee selection and reset employee text color
+    employeeSelect.disabled = true;
+    employeeText.style.color = "#adb5bd";
+
+    // add event listener to department select so we get employees based on department
+    departmentSelect.addEventListener("change", async function () {
+      const departmentId = departmentSelect.value;
+
+      // clear existing options
+      employeeSelect.innerHTML = "";
+
+      // if department exists and if employees exist for that department then get employees and enable employee select
+
+      console.log(departmentId);
+
+      if (departmentId) {
+        const employees = await getEmployeesByDepartment(
+          parseInt(departmentId)
+        );
+
+        console.log(employees);
+
+        if (employees) {
+          employeeText.style.color = "#343a40";
+          employeeSelect.disabled = false;
+
+          employees.forEach((employee) => {
+            const option = document.createElement("option");
+            option.textContent = employee.name + " " + employee.surname;
+            option.value = employee.id;
+            employeeSelect.append(option);
+          });
+        } else {
+          // if employees doesn't exist for selected department add option that tells users
+          const noEmployeesOption = document.createElement("option");
+          noEmployeesOption.textContent =
+            "ამ დეპარტამენტს არ ჰყავს თანამშრომლები!";
+          employeeText.style.color = "#adb5bd";
+          employeeSelect.disabled = true;
+        }
+      } else {
+        // if department isn't selected disable employee select
+        employeeText.style.color = "#adb5bd";
+        employeeSelect.disabled = true;
+      }
     });
   } catch (error) {
     console.error("Error:", error);
@@ -716,7 +771,7 @@ async function employeesInTasksForm() {
 
 employeesInTasksForm();
 
-// validating task title and description
+// validating task title and description visually
 
 const taskTitle = document.getElementById("title");
 const taskDescription = document.getElementById("description");

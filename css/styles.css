@@ -430,6 +430,10 @@ header {
   height: 13.3rem;
   resize: none;
 }
+
+.employee_text {
+  color: #adb5bd;
+}
 .addTasks-button-box {
   display: flex;
   justify-content: flex-end;
