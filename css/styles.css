@@ -115,7 +115,6 @@ header {
   border: none;
   border-radius: 2rem;
   padding: 8px 2rem;
-  cursor: pointer;
 }
 /* statuses */
 
@@ -442,5 +441,4 @@ header {
   font-size: 1.8rem;
   border-radius: 5px;
   padding: 1rem 2rem;
-  cursor: pointer;
 }

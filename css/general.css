@@ -72,6 +72,11 @@ img {
   height: auto;
 }
 
+button,
+select {
+  cursor: pointer;
+}
+
 .grid {
   display: grid;
   column-gap: 5.2rem;

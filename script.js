@@ -486,12 +486,19 @@ const uploadBox = document.querySelector(".upload-box");
 
 // separated function for input validation
 
-function validateInput(input, minCheck, maxCheck, lettersCheck) {
+function validateInput(
+  input,
+  minNumber,
+  maxNumber,
+  minCheck,
+  maxCheck,
+  lettersCheck
+) {
   const value = input.value;
   const regex = /^[A-Za-zა-ჰ]+$/;
 
   let isValid = true;
-  if (value.length < 2) {
+  if (value.length < minNumber) {
     minCheck.style.color = "#FA4D4D";
     input.style.borderColor = "#FA4D4D";
     isValid = false;
@@ -499,7 +506,7 @@ function validateInput(input, minCheck, maxCheck, lettersCheck) {
     minCheck.style.color = "#08A508";
   }
 
-  if (value.length > 255) {
+  if (value.length > maxNumber) {
     maxCheck.style.color = "#FA4D4D";
     input.style.borderColor = "#FA4D4D";
     isValid = false;
@@ -507,12 +514,14 @@ function validateInput(input, minCheck, maxCheck, lettersCheck) {
     maxCheck.style.color = "#08A508";
   }
 
-  if (!regex.test(value)) {
-    lettersCheck.style.color = "#FA4D4D";
-    isValid = false;
-    input.style.borderColor = "#FA4D4D";
-  } else {
-    lettersCheck.style.color = "#08A508";
+  if (lettersCheck) {
+    if (!regex.test(value)) {
+      lettersCheck.style.color = "#FA4D4D";
+      isValid = false;
+      input.style.borderColor = "#FA4D4D";
+    } else {
+      lettersCheck.style.color = "#08A508";
+    }
   }
 
   if (isValid) {
@@ -525,6 +534,8 @@ function validateInput(input, minCheck, maxCheck, lettersCheck) {
 nameInput.addEventListener("input", () => {
   validateInput(
     nameInput,
+    2,
+    255,
     document.querySelector(".name-min"),
     document.querySelector(".name-max"),
     document.querySelector(".name-letters")
@@ -535,6 +546,8 @@ nameInput.addEventListener("input", () => {
 surnameInput.addEventListener("input", () => {
   validateInput(
     surnameInput,
+    2,
+    255,
     document.querySelector(".surname-min"),
     document.querySelector(".surname-max"),
     document.querySelector(".surname-letters")
@@ -623,7 +636,13 @@ document.querySelector(".cta-link").addEventListener("click", () => {
   window.location.href = "/add-tasks.html";
 });
 
-// Add Tasks Form
+/*  
+**********************************
+      ADD TASKS FUNCTIONALITY
+**********************************      
+*/
+
+// fetching departments,priorities,statuses and employees into form
 
 async function departmentsInTasksForm() {
   try {
@@ -696,3 +715,28 @@ async function employeesInTasksForm() {
 }
 
 employeesInTasksForm();
+
+// validating task title and description
+
+const taskTitle = document.getElementById("title");
+const taskDescription = document.getElementById("description");
+
+taskTitle.addEventListener("input", () => {
+  validateInput(
+    taskTitle,
+    3,
+    255,
+    document.querySelector(".title-min"),
+    document.querySelector(".title-max")
+  );
+});
+
+taskDescription.addEventListener("input", () => {
+  validateInput(
+    taskDescription,
+    4,
+    255,
+    document.querySelector(".description-min"),
+    document.querySelector(".description-max")
+  );
+});
