@@ -795,3 +795,57 @@ taskDescription.addEventListener("input", () => {
     document.querySelector(".description-max")
   );
 });
+
+// adding tasks on form submission
+const tasksForm = document.querySelector(".addTasks-form");
+
+tasksForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const title = taskTitle.value;
+  const description = taskDescription.value;
+  const priority = document.getElementById("taskPriority").value;
+  const status = document.getElementById("status").value;
+  const employee = document.getElementById("employee").value;
+  const deadline = document.getElementById("deadline").value;
+
+  let validated = true;
+  console.log(title.length);
+  console.log(description.length);
+
+  //  validating title and description
+  if (title.length < 3 || title.length > 255) {
+    validated = false;
+  }
+
+  if (description.length > 0) {
+    if (description.length < 4 || description.length > 255) {
+      validated = false;
+    }
+  }
+  // if form doesnt pass validation exit
+  if (!validated) return;
+
+  const formData = new FormData();
+  formData.append("name", title);
+  formData.append("description", description);
+  formData.append("due_date", deadline);
+  formData.append("status_id", status);
+  formData.append("employee_id", employee);
+  formData.append("priority_id", priority);
+
+  // send post request with form data
+  fetch("https://momentum.redberryinternship.ge/api/tasks", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((window.location.href = "/"))
+    .catch((error) => console.error(error));
+
+  // reset form
+  tasksForm.reset();
+});
