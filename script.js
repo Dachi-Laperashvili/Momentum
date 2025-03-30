@@ -842,10 +842,13 @@ tasksForm.addEventListener("submit", (e) => {
     },
     body: formData,
   })
-    .then((res) => res.json())
-    .then((window.location.href = "/"))
+    .then((res) => {
+      console.log(res);
+      res.json();
+    })
+    .then(() => {
+      tasksForm.reset();
+      window.location.href = "/";
+    })
     .catch((error) => console.error(error));
-
-  // reset form
-  tasksForm.reset();
 });
